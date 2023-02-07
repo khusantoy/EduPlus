@@ -17,7 +17,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/admin', function () {
+    return view('admin.dashboard');
+});
+Route::group(['middleware'=>['auth']],function (){
+   Route::resource('/users',\App\Http\Controllers\UsersController::class);
+   Route::resource('/roles',\App\Http\Controllers\RoleController::class);
+   Route::resource('/permissions',\App\Http\Controllers\PermissionController::class);
+});
+//Route::get('users/{user}');
+Route::get('/test',function (){
+    \App\Models\Role::find(2)->permissions()->sync(6);
+});
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
