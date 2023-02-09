@@ -20,15 +20,14 @@ Route::get('/', function () {
 Route::get('/admin', function () {
     return view('admin.dashboard');
 });
-Route::group(['middleware'=>['auth']],function (){
-   Route::resource('/users',\App\Http\Controllers\UsersController::class);
-   Route::resource('/roles',\App\Http\Controllers\RoleController::class);
-   Route::resource('/permissions',\App\Http\Controllers\PermissionController::class);
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('users/archive', [\App\Http\Controllers\UsersController::class, 'archive'])->name('users.archive');
+    Route::get('users/restore/{id}',[\App\Http\Controllers\UsersController::class,'restore'])->name('users.restore');
+    Route::resource('/users', \App\Http\Controllers\UsersController::class);
+   Route::resource('/roles', \App\Http\Controllers\RoleController::class);
+   Route::resource('/permissions', \App\Http\Controllers\PermissionController::class);
 });
-//Route::get('users/{user}');
-Route::get('/test',function (){
-    \App\Models\Role::find(2)->permissions()->sync(6);
-});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -39,4 +38,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -29,6 +29,7 @@
             transform: rotate(90deg);
         }
     </style>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <link href="{{asset('eduplus/css/app.css')}}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -43,31 +44,39 @@
 
             <ul class="sidebar-nav">
                 <li class="sidebar-header">
-                    Pages
+                    Statics
                 </li>
 
-                <li class="sidebar-item active">
+                <li class="sidebar-item {{ (request()->is('index.html')) ? 'active' : '' }}">
                     <a class="sidebar-link" href="index.html">
                         <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link dropdown-btn" href="#">
-                        <i class="align-middle" data-feather="grid"></i> <span class="align-middle">User Management
-                        <i data-feather="chevron-down"></i>
-                        </span>
+
+                <li class="sidebar-header">
+                    User Management
+                </li>
+
+                <li class="sidebar-item {{ (request()->is('users*')) ? 'active' : '' }}">
+                    <a class="sidebar-link" href="{{route('users.index')}}">
+                        <i class="align-middle" data-feather="users"></i> <span class="align-middle">Users</span>
                     </a>
-                    <div class="dropdown-container">
-                        <a class="sidebar-link " href="{{route('users.index')}}">
-                            <i class="align-middle" data-feather="users"></i> <span class="align-middle">Users</span>
-                        </a>
-                        <a class="sidebar-link " href="{{route('roles.index')}}">
-                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Roles</span>
-                        </a>
-                        <a class="sidebar-link " href="{{route('permissions.index')}}">
-                            <i class="align-middle" data-feather="shield"></i> <span class="align-middle">Permissions</span>
-                        </a>
-                    </div>
+                </li>
+
+                <li class="sidebar-item {{ (request()->is('roles*')) ? 'active' : '' }}">
+                    <a class="sidebar-link" href="{{route('roles.index')}}">
+                        <i class="align-middle" data-feather="user"></i> <span class="align-middle">Roles</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item {{ (request()->is('permissions*')) ? 'active' : '' }}">
+                    <a class="sidebar-link" href="{{route('permissions.index')}}">
+                        <i class="align-middle" data-feather="shield"></i> <span class="align-middle">Permissions</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-header">
+                    Accaunt
                 </li>
 
                 <li class="sidebar-item">
@@ -85,62 +94,6 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="pages-sign-up.html">
                         <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign Up</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="pages-blank.html">
-                        <i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-header">
-                    Tools & Components
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="ui-buttons.html">
-                        <i class="align-middle" data-feather="square"></i> <span class="align-middle">Buttons</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="ui-forms.html">
-                        <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Forms</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="ui-cards.html">
-                        <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Cards</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="ui-typography.html">
-                        <i class="align-middle" data-feather="align-left"></i> <span class="align-middle">Typography</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{asset('eduplus/icons-feather.html')}}">
-                        <i class="align-middle" data-feather="coffee"></i> <span class="align-middle">Icons</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-header">
-                    Plugins & Addons
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="charts-chartjs.html">
-                        <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Charts</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="maps-google.html">
-                        <i class="align-middle" data-feather="map"></i> <span class="align-middle">Maps</span>
                     </a>
                 </li>
             </ul>
@@ -319,25 +272,10 @@
 
     </div>
 </div>
+{{--alert--}}
+
 
 <script src="{{asset('eduplus/js/app.js')}}"></script>
-{{--dropdown menu --}}
-<script>
-    var dropdown = document.getElementsByClassName("dropdown-btn");
-    var i;
-
-    for (i = 0; i < dropdown.length; i++) {
-        dropdown[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var dropdownContent = this.nextElementSibling;
-            if (dropdownContent.style.display === "block") {
-                dropdownContent.style.display = "none";
-            } else {
-                dropdownContent.style.display = "block";
-            }
-        });
-    }
-</script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");

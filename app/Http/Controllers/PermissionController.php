@@ -14,7 +14,8 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        //
+        $permissions = Permission::all();
+        return view('admin.permissions.index',compact('permissions'));
     }
 
     /**
@@ -24,7 +25,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.permissions.create');
     }
 
     /**
@@ -35,7 +36,8 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $permission = Permission::create($request->all());
+         return redirect()->route('permissions.index');
     }
 
     /**
@@ -57,7 +59,7 @@ class PermissionController extends Controller
      */
     public function edit(Permission $permission)
     {
-        //
+        return view('admin.permissions.edit',compact('permission'));
     }
 
     /**
@@ -69,7 +71,10 @@ class PermissionController extends Controller
      */
     public function update(Request $request, Permission $permission)
     {
-        //
+        
+        $permission->update($request->all());
+
+        return redirect()->route('permissions.index');
     }
 
     /**
