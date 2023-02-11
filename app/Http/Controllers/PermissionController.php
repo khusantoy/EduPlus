@@ -71,7 +71,7 @@ class PermissionController extends Controller
      */
     public function update(Request $request, Permission $permission)
     {
-        
+
         $permission->update($request->all());
 
         return redirect()->route('permissions.index');
@@ -85,6 +85,7 @@ class PermissionController extends Controller
      */
     public function destroy(Permission $permission)
     {
-        //
+        $permission->delete();
+        return back();
     }
 }

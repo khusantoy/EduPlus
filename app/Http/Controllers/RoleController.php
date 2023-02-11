@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Permission;
 use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -26,7 +27,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        $permissions = Permission::all();
+        $permissions = Permission::pluck('title','id');
         return view('admin.roles.create',compact('permissions'));
     }
 
@@ -38,7 +39,9 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $role = Role::create($request->all());
+        $role->permissions()->sync($request->permissions);
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -73,6 +76,7 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
+        $role->update($request->all());
         $role->permissions()->sync($request->permissions);
         return redirect()->route('roles.index');
     }
@@ -83,8 +87,11 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function destroy(Role $role,User $user)
     {
-        //
+        $user->roles()->sync([]);
+        $role->permissions()->sync([]);
+        $role->delete();
+        return back();
     }
 }

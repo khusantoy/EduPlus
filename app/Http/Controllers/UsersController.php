@@ -39,6 +39,12 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required',
+            'password'=>'required'
+        ],
+        );
         $user = User::create($request->all());
         $user->roles()->sync($request->roles);
         return redirect()->route('users.index');
@@ -104,7 +110,13 @@ class UsersController extends Controller
     public function restore($id)
     {
         User::withTrashed()->find($id)->restore();
-        return redirect()->route('users.index');
+        return redirect()->route('users.archive');
+    }
+    public function remove($id)
+    {
+        User::withTrashed()->find($id)->roles()->sync([]);
+        User::withTrashed()->find($id)->forceDelete();
+        return redirect()->route('users.archive');
     }
 
 }

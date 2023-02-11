@@ -23,6 +23,7 @@ Route::get('/admin', function () {
 Route::group(['middleware' => ['auth']], function () {
     Route::get('users/archive', [\App\Http\Controllers\UsersController::class, 'archive'])->name('users.archive');
     Route::get('users/restore/{id}',[\App\Http\Controllers\UsersController::class,'restore'])->name('users.restore');
+    Route::get('users/remove/{id}',[\App\Http\Controllers\UsersController::class,'remove'])->name('users.remove');
     Route::resource('/users', \App\Http\Controllers\UsersController::class);
    Route::resource('/roles', \App\Http\Controllers\RoleController::class);
    Route::resource('/permissions', \App\Http\Controllers\PermissionController::class);

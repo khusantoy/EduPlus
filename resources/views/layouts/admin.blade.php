@@ -10,6 +10,7 @@
     <meta name="keywords" content="EduPlus">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="shortcut icon" href="{{asset('eduplus/img/icons/icon-48x48.png')}}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <title>EduPlus</title>
     <style>
@@ -74,7 +75,19 @@
                         <i class="align-middle" data-feather="shield"></i> <span class="align-middle">Permissions</span>
                     </a>
                 </li>
-
+                <li class="sidebar-header">
+                    Course Management
+                </li>
+                <li class="sidebar-item {{ (request()->is('courses*')) ? 'active' : '' }}">
+                    <a class="sidebar-link" href="#">
+                        <i class="align-middle" data-feather="shield"></i> <span class="align-middle">Courses</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{ (request()->is('rooms*')) ? 'active' : '' }}">
+                    <a class="sidebar-link" href="#">
+                        <i class="align-middle" data-feather="shield"></i> <span class="align-middle">Rooms</span>
+                    </a>
+                </li>
                 <li class="sidebar-header">
                     Accaunt
                 </li>
