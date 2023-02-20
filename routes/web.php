@@ -27,6 +27,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/users', \App\Http\Controllers\UsersController::class);
    Route::resource('/roles', \App\Http\Controllers\RoleController::class);
    Route::resource('/permissions', \App\Http\Controllers\PermissionController::class);
+   Route::resource('/courses', \App\Http\Controllers\CourseController::class);
+   Route::resource('/rooms', \App\Http\Controllers\RoomController::class);
+   Route::resource('/groups', \App\Http\Controllers\GroupController::class);
 });
 
 Route::get('/dashboard', function () {

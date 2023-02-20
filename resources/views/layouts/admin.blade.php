@@ -33,6 +33,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <link href="{{asset('eduplus/css/app.css')}}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    @livewireStyles
 </head>
 
 <body>
@@ -45,12 +46,12 @@
 
             <ul class="sidebar-nav">
                 <li class="sidebar-header">
-                    Statics
+                    Statistics
                 </li>
 
                 <li class="sidebar-item {{ (request()->is('index.html')) ? 'active' : '' }}">
                     <a class="sidebar-link" href="index.html">
-                        <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+                        <i class="align-middle" data-feather="home"></i> <span class="align-middle">Dashboard</span>
                     </a>
                 </li>
 
@@ -79,13 +80,28 @@
                     Course Management
                 </li>
                 <li class="sidebar-item {{ (request()->is('courses*')) ? 'active' : '' }}">
-                    <a class="sidebar-link" href="#">
-                        <i class="align-middle" data-feather="shield"></i> <span class="align-middle">Courses</span>
+                    <a class="sidebar-link" href="{{route('courses.index')}}">
+                        <i class="align-middle" data-feather="book-open"></i> <span class="align-middle">Courses</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{ (request()->is('groups*')) ? 'active' : '' }}">
+                    <a class="sidebar-link" href="{{route('groups.index')}}">
+                        <i class="align-middle" data-feather="users"></i> <span class="align-middle">Groups</span>
                     </a>
                 </li>
                 <li class="sidebar-item {{ (request()->is('rooms*')) ? 'active' : '' }}">
+                    <a class="sidebar-link" href="{{route('rooms.index')}}">
+                        <i class="align-middle" data-feather="box"></i> <span class="align-middle">Rooms</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{ (request()->is('staffs*')) ? 'active' : '' }}">
                     <a class="sidebar-link" href="#">
-                        <i class="align-middle" data-feather="shield"></i> <span class="align-middle">Rooms</span>
+                        <i class="align-middle" data-feather="users"></i> <span class="align-middle">Staffs</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{ (request()->is('students*')) ? 'active' : '' }}">
+                    <a class="sidebar-link" href="#">
+                        <i class="align-middle" data-feather="users"></i> <span class="align-middle">Students</span>
                     </a>
                 </li>
                 <li class="sidebar-header">
@@ -510,7 +526,7 @@
         });
     });
 </script>
-
+@livewireScripts
 </body>
 
 </html>

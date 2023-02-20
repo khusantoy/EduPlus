@@ -28,14 +28,14 @@
                             <input type="password" name="password" class="form-control" id="password">
                         </div>
                         <p class="form-control-label">Roles:</p>
-                        <div class="row">
+                        <div >
                             @foreach ($roles as $id => $role)
                                 <div class="col-md-2">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="flexCheckDefault" name="roles[]" value="{{ $id }}">
                                         <label class="form-check-label" for="flexCheckDefault">
                                            <h4>
-                                               <span class="badge bg-warning rounded-pill">
+                                               <span class="badge bg-success rounded-pill">
                                                     {{$role}}
                                                </span>
                                            </h4>
