@@ -95,7 +95,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item {{ (request()->is('staffs*')) ? 'active' : '' }}">
-                    <a class="sidebar-link" href="#">
+                    <a class="sidebar-link" href="{{ route('staffs.index') }}">
                         <i class="align-middle" data-feather="users"></i> <span class="align-middle">Staffs</span>
                     </a>
                 </li>

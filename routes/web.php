@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth']], function () {
    Route::resource('/courses', \App\Http\Controllers\CourseController::class);
    Route::resource('/rooms', \App\Http\Controllers\RoomController::class);
    Route::resource('/groups', \App\Http\Controllers\GroupController::class);
+   Route::resource('/staffs', \App\Http\Controllers\StaffsController::class);
 });
 
 Route::get('/dashboard', function () {

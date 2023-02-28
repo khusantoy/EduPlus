@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1 class="h3 mb-3"><strong>Create</strong> Group</h1>
+    <h1 class="h3 mb-3"><strong>Add</strong> Group</h1>
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -10,13 +10,17 @@
                         @csrf
                         <div class="mb-3">
                             <label for="name" class="form-label">Title</label>
-                            <input type="text" name="title" class="form-control" id="name">
+                            <input type="text" name="name" class="form-control" id="name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">status</label>
+                            <input type="text" name="status" class="form-control" id="name">
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="course" class="form-label">Course</label>
-                                    <select class="form-select" id="course" name="courses[]" required aria-label="Default select example">
+                                    <select class="form-select" id="course" name="course_id" required aria-label="Default select example">
                                         @foreach($courses as $id=>$course)
                                             <option value="{{$id}}" {{in_array($id,old('courses',[])) ? 'selected' : ''}}>{{$course}}</option>
                                         @endforeach
@@ -26,7 +30,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="room" class="form-label">Room</label>
-                                    <select class="form-select" id="room" name="rooms[]" required aria-label="Default select example">
+                                    <select class="form-select" id="room_id" name="room_id" required aria-label="Default select example">
                                         @foreach($rooms as $id=>$room)
                                             <option value="{{$id}}" {{in_array($id,old('rooms',[])) ? 'selected' : ''}}>{{$room}}</option>
                                         @endforeach
@@ -74,7 +78,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                             </svg>
-                            Create
+                            Add
                         </button>
                         <a class="btn btn-secondary mt-3"  href="{{route('groups.index')}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">

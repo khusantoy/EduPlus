@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
 //          RoomSeeder::class,
 //           DaySeeder::class
 //            GroupSeeder::class
+            StaffsSeeder::class
      ]);
     }
 }

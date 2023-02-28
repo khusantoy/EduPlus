@@ -18,8 +18,7 @@ class GroupController extends Controller
      */
     public function index()
     {
-        $groups = Group::with('courses')->get();
-
+        $groups = Group::all();
         return view('admin.groups.index',compact('groups'));
     }
 
@@ -44,9 +43,9 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        $group = Group::create($request->all());
-        $group->courses()->sync($request->courses);
-        $group->rooms()->sync($request->rooms);
+    //    dd($request->all());
+        $groups = Group::with('course','room','days')->get();
+        // $groups->days()->sync($request->days);
         return redirect()->route('groups.index');
     }
 
@@ -81,7 +80,7 @@ class GroupController extends Controller
      */
     public function update(Request $request, Group $group)
     {
-        //
+        
     }
 
     /**

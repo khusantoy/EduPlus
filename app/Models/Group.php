@@ -17,13 +17,14 @@ class Group extends Model
         'finish',
         'days'
     ];
-    public function courses() {
-        $this->belongsTo(Course::class);
+    public function course() {
+        return $this -> belongsTo(Course::class);
     }
-    public function rooms() {
-        $this->belongsTo(Room::class);
+    public function room() {
+        return $this -> belongsTo(Room::class);
     }
-    public function days() {
-        $this->belongsTo(Day::class);
+    public function days()
+    {
+        return $this -> belongsToMany(Day::class, 'day_group');
     }
 }
