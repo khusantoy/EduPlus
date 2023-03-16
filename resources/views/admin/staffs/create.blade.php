@@ -37,10 +37,10 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="status" class="form-label">Status</label>
-                                    <select class="form-select" id="status" name="status" required aria-label="select status">
-                                        <option value="Foiz" {{in_array(1,old('status',[])) ? 'selected' : ''}}>Foiz</option>
-                                        <option value="Summa" {{in_array(2,old('status',[])) ? 'selected' : ''}}>Summa</option>
-                                        <option value="O'quvchi soni" {{in_array(3,old('status',[])) ? 'selected' : ''}}>O'quvchi soni</option>
+                                    <select class="form-select" id="status" name="status_id" required aria-label="select status">
+                                        @foreach ($statuses as $id => $status )
+                                         <option value="{{$id}}" {{in_array($id,old('status',[])) ? 'selected' : ''}}>{{ $status }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -60,12 +60,10 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="text" name="image">
-                        {{-- <div class="mb-3">
-                            <label for="formFile" class="form-label">Image for Staff~</label>
-                            <input class="form-control" type="file" id="formFile">
-                          </div> --}}
-                    
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image for Staff</label>
+                            <input class="form-control" name="image" type="file" id="formFile">
+                        </div>
                         <button class="btn btn-primary mt-3" type="submit">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>

@@ -85,6 +85,7 @@ class PermissionController extends Controller
      */
     public function destroy(Permission $permission)
     {
+        $permission->roles()->sync([]);
         $permission->delete();
         return back();
     }

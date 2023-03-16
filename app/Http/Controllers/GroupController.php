@@ -43,9 +43,8 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-    //    dd($request->all());
-        $groups = Group::with('course','room','days')->get();
-        // $groups->days()->sync($request->days);
+        $group = Group::create($request->all());
+        $group->days()->sync($request->days);
         return redirect()->route('groups.index');
     }
 
@@ -57,7 +56,7 @@ class GroupController extends Controller
      */
     public function show(Group $group)
     {
-        //
+        return view('admin.groups.show',compact('group'));
     }
 
     /**
@@ -68,7 +67,10 @@ class GroupController extends Controller
      */
     public function edit(Group $group)
     {
-        //
+        $courses = Course::pluck('title','id');
+        $rooms = Room::pluck('title','id');
+        $days = Day::all();
+        return view('admin.groups.edit',compact('group','days','courses','rooms'));
     }
 
     /**
@@ -80,7 +82,9 @@ class GroupController extends Controller
      */
     public function update(Request $request, Group $group)
     {
-        
+        $group->update($request->all());
+        $group->days()->sync($request->days);
+        return redirect()->route('groups.index');
     }
 
     /**
@@ -91,6 +95,11 @@ class GroupController extends Controller
      */
     public function destroy(Group $group)
     {
-        //
+//        $user->roles()->sync([]);
+//        $group->days()->sync([]);
+//        $group->room()->sync([]);
+//        $group->course()->sync([]);
+        $group->delete();
+        return back();
     }
 }

@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('group_status', function (Blueprint $table) {
+        Schema::create('group_statuses', function (Blueprint $table) {
             $table->id();
             $table->string('title');
         });
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('group_status');
+        Schema::dropIfExists('group_statuses');
     }
 };

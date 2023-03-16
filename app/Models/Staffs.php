@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Staffs extends Model
 {
@@ -12,14 +13,22 @@ class Staffs extends Model
     protected $fillable = [
         'name',
         'surname',
-        'role_id',
-        'status',
         'salary',
         'phone_number',
         'image',
+        'status_id'
     ];
     public function role()
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsToMany(Role::class,'role_staffs');
+    }
+
+    public function messages(): MorphMany
+    {
+        return $this->morphMany(Messages::class, 'messagable');
+    }
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
     }
 }

@@ -17,6 +17,7 @@
                             <th>Id</th>
                             <th>Name</th>
                             <th>Course</th>
+                            <th>Course Price</th>
                             <th>Room</th>
                             <th>Status</th>
                             <th>Start</th>
@@ -32,13 +33,19 @@
                                 <td>{{$group->id}}</td>
                                 <td>{{$group->name}}</td>
                                 <td>{{$group->course->title}}</td>
+                                <td>
+                                    <span class="badge bg-info">$ {{$group->course->price}}</span>
+                                </td>
                                 <td>{{$group->room->title}}</td>
-                                <td>{{$group->status}}</td>
+                                <td>
+                                    <span class="badge bg-success rounded-pill">{{$group->status}}</span>
+                                </td>
                                 <td>{{$group->start}}</td>
                                 <td>{{$group->finish}}</td>
                                 <td>
                                     @foreach($group->days as $day)
                                         <span class="badge bg-primary">{{$day->name}}</span>
+                                        @if(count(get_object_vars($day)) > 3  ) <br> @endif
                                     @endforeach
                                 </td>
                                 <td>

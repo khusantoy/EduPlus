@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Group;
 use App\Models\Role;
 use App\Models\Staffs;
+use App\Models\Status;
 use Illuminate\Http\Request;
 
 class StaffsController extends Controller
@@ -16,8 +17,7 @@ class StaffsController extends Controller
      */
     public function index()
     {
-        // $staffs = Staffs::all();
-        $staffs = Staffs::with('role')->get();
+         $staffs = Staffs::with('role')->get();
         return view('admin.staffs.index',compact('staffs'));
     }
 
@@ -28,8 +28,9 @@ class StaffsController extends Controller
      */
     public function create()
     {
+        $statuses = Status::pluck('title','id');
         $roles = Role::pluck('title','id');
-        return view('admin.staffs.create',compact('roles'));
+        return view('admin.staffs.create',compact('roles','statuses'));
     }
 
     /**
@@ -40,8 +41,15 @@ class StaffsController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        $staffs = Staffs::create($request->all()); 
+       $worker = Staffs::find(4);
+       dd($worker->messages[0]->message);
+
+//       $worker->messages()->create([
+//          'message'=>"staff message "
+//       ]);
+
+
+
         return redirect()->route('staffs.index');
     }
 

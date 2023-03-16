@@ -27,7 +27,9 @@
                                     <td>{{$course->id}}</td>
                                     <td>{{$course->title}}</td>
                                     <td>{{$course->description}}</td>
-                                    <td>{{$course->price}}</td>
+                                    <td>
+                                        <h4><span class="badge bg-info">$ {{$course->price}}</span></h4>
+                                    </td>
                                     <td>
                                         <a href="{{route('courses.edit',$course->id)}}" class="btn btn-primary">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">

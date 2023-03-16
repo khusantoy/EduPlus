@@ -47,6 +47,11 @@ class UsersController extends Controller
         );
         $user = User::create($request->all());
         $user->roles()->sync($request->roles);
+
+        $user->messages()->create([
+           'message'=>'salom'
+        ]);
+
         return redirect()->route('users.index');
     }
 
@@ -85,6 +90,11 @@ class UsersController extends Controller
         $user->roles()->sync($request->roles);
 
         $user->update($request->all());
+
+        $user->messages()->create([
+            'message'=>'salom2',
+
+        ]);
 
         return redirect()->route('users.index');
     }

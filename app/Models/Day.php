@@ -11,7 +11,7 @@ class Day extends Model
     protected $fillable = [
       'name',
     ];
-//    public function groups() {
-//        return $this->belongsToMany(Group::class);
-//    }
+    public function groups() {
+        return $this->belongsToMany(Group::class);
+    }
 }

@@ -2,11 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\GroupStatus;
+
+use App\Models\Status;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class GroupStatusSeeder extends Seeder
+class StatusSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,15 +16,15 @@ class GroupStatusSeeder extends Seeder
      */
     public function run()
     {
-        GroupStatus::insert([
+        Status::insert([
             [
-                'title' => 'Active'
+                'title' => 'Foiz'
             ],
             [
-                'title' => 'Continues'
+                'title' => 'Summa'
             ],
             [
-                'title' => 'Paused'
+                'title' => 'O\'quvchi soni'
             ]
         ]);
     }

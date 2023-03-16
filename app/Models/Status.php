@@ -12,8 +12,4 @@ class Status extends Model
     protected $fillable = [
         'title'
     ];
-    public function status()
-    {
-        return $this->belongsTo(Staffs::class);
-    }
 }

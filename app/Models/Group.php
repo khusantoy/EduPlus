@@ -14,8 +14,7 @@ class Group extends Model
         'room_id',
         'status',
         'start',
-        'finish',
-        'days'
+        'finish'
     ];
     public function course() {
         return $this -> belongsTo(Course::class);
@@ -25,6 +24,8 @@ class Group extends Model
     }
     public function days()
     {
-        return $this -> belongsToMany(Day::class, 'day_group');
+        return $this -> belongsToMany(Day::class,'day_group');
     }
+
+
 }

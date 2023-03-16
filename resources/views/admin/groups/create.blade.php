@@ -13,8 +13,8 @@
                             <input type="text" name="name" class="form-control" id="name">
                         </div>
                         <div class="mb-3">
-                            <label for="name" class="form-label">status</label>
-                            <input type="text" name="status" class="form-control" id="name">
+                            <label for="status" class="form-label">Status</label>
+                            <input class="form-control" value="Faol" type="text" name="status" >
                         </div>
                         <div class="row">
                             <div class="col-md-6">

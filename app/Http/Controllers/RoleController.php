@@ -91,6 +91,8 @@ class RoleController extends Controller
     {
         $user->roles()->sync([]);
         $role->permissions()->sync([]);
+        $role->users()->sync([]);
+        $role->staffs()->sync([]);
         $role->delete();
         return back();
     }

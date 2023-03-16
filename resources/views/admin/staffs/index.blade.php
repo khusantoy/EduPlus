@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-body">
                     <a class="btn btn-primary mb-3"  href="{{route('staffs.create')}}">
-                    
+
                         <i class="align-middle" data-feather="user-plus"></i>
                         Add New
                     </a>
@@ -25,15 +25,17 @@
                         </tr>
                         </thead>
                         <tbody>
-                           
+
                         @foreach($staffs as $staff)
                             <tr>
                                 <td>{{$staff->id}}</td>
                                 <td>{{$staff->image}}</td>
                                 <td>{{$staff->name}}</td>
                                 <td>{{$staff->surname}}</td>
-                                <td>{{$staff->role->title}}</td>
-                                <td>{{$staff->status}}</td>
+                                @foreach($staff->role as $item)
+                                    <td>{{$item  ->title}}</td>
+                                @endforeach
+                                <td>{{$staff->status->title}}</td>
                                 <td>{{$staff->salary}}</td>
                                 <td>{{$staff->phone_number}}</td>
                                 <td>

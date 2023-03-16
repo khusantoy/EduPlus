@@ -81,7 +81,7 @@
             event.preventDefault();
             swal({
                 title: `Are you sure you want to delete this record?`,
-                text: "If you delete this, it will be gone.",
+                text: "If you delete this, it will be saved to archive.",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,

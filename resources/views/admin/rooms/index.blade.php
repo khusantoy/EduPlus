@@ -25,7 +25,9 @@
                             <tr>
                                 <td>{{$room->id}}</td>
                                 <td>{{$room->title}}</td>
-                                <td>{{$room->room_number}}</td>
+                                <td>
+                                    <h4><span class="badge bg-info">{{$room->room_number}} -xona</span></h4>
+                                </td>
                                 <td>
                                     <a href="{{route('rooms.edit',$room->id)}}" class="btn btn-primary">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">

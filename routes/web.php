@@ -17,10 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/admin', function () {
-    return view('admin.dashboard');
-});
+
 Route::group(['middleware' => ['auth']], function () {
+    Route::get('/admin', function () {
+        return view('admin.dashboard');
+    });
     Route::get('users/archive', [\App\Http\Controllers\UsersController::class, 'archive'])->name('users.archive');
     Route::get('users/restore/{id}',[\App\Http\Controllers\UsersController::class,'restore'])->name('users.restore');
     Route::get('users/remove/{id}',[\App\Http\Controllers\UsersController::class,'remove'])->name('users.remove');
